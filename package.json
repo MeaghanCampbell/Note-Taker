@@ -1,23 +1,18 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "# Acceptance Criteria",
+  "description": "# Description The note taker app is an express.js application that runs using node.js. It allows users to add notes on the front end, and then they save on the back end of the server in a json file. They are then posted again when the server reloads. Each note is given a unique ID on the back end.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MeaghanCampbell/Note-Taker.git"
   },
-  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/MeaghanCampbell/Note-Taker/issues"
   },
