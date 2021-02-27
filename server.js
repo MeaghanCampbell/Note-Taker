@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 // serve to port for heroku or use default
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
 // instantiate the server
 const app = express()
@@ -54,5 +54,3 @@ app.post('/api/notes', (req, res) => {
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}`)
 })
-
-// new comment
