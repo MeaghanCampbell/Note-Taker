@@ -1,11 +1,21 @@
 const express = require('express')
 const fs = require('fs')
+const path = require('path')
+
+// serve to port for heroku or use default
+const PORT = process.env.PORT || 3001
 
 // instantiate the server
 const app = express()
 
+// middleware so app can accept post data
+// parse incoming string or array data
+app.use(express.urlencoded({ extended: true }));
+// parse incoming JSON data
+app.use(express.json());
+
 // route that front end can request data from
-const notes = require('./Develop/db/db.json')
+const notes = require('./develop/db/db.json')
 
 // reads the db.json file
 app.get('/api/notes', (req, res) => {
@@ -13,18 +23,24 @@ app.get('/api/notes', (req, res) => {
 })
 
 // returns index.html
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'index.html'))
-// })
+app.get('/', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'index.html'))
+})
 
-// // returns notes.html
-// app.get('/notes', (req, res) => {
-//     return res.sendFile(path.join(__dirname, 'notes.html'))
-// })
+// returns notes.html
+app.get('/notes', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'notes.html'))
+})
 
-// POST /api/notes should receive a new note to save on the request body, add it to the db.json file and return the new note to the client
-// need to find a way to give each note a unique id when it's saved - find npm packages that could do this for you
+// post receives a new note to save on the request body
+// add new note to the db.json file and return the new note to the client with unique ID
+app.post('/api/notes', (req, res) => {
+    const newNote = req.body
+    newNote.id = notes.length.toString()
+    notes.push(newNote)
+    res.json(newNote)
+})
 
 app.listen(3001, () => {
-    console.log(`API server now on port 3001!`)
+    console.log(`API server now on port ${PORT}`)
 })
