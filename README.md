@@ -10,7 +10,7 @@ Clone github repo, start server using NPM start, and visit local host.
 ![Screen Shot 2021-02-27 at 11 22 13 AM](https://user-images.githubusercontent.com/74511935/109394728-154f4c00-78ee-11eb-89fc-6f4703e4e6ad.png)
 
 # Links
-App is deployed to [heroku] and [github] (https://github.com/meaghancampbell/note-taker).
+App is deployed to [heroku] (https://pure-harbor-05149.herokuapp.com/) and [github] (https://github.com/meaghancampbell/note-taker).
 
 # Credits
 This app was created by Meaghan Campbell.
