@@ -19,7 +19,7 @@ app.use(express.static('public'));
 
 // route that front end can request data from
 const notes = require('./develop/db/db.json')
-const saveNote = require('./Develop/public/assets/js')
+//const saveNote = require('./develop/public/assets/js')
 
 // reads the db.json file
 app.get('/api/notes', (req, res) => {
@@ -42,8 +42,15 @@ app.post('/api/notes', (req, res) => {
     const newNote = req.body
     newNote.id = notes.length.toString()
     notes.push(newNote)
+
+    fs.writeFile('./develop/db/db.json', JSON.stringify(notes), 'UTF8', function(err) {
+        if (err) throw err
+        console.log('wrote to file.')
+    })
+
     res.json(newNote)
 })
+
 
 app.listen(3001, () => {
     console.log(`API server now on port ${PORT}`)
