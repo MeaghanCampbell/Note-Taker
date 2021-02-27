@@ -19,6 +19,7 @@ app.use(express.static('public'));
 
 // route that front end can request data from
 const notes = require('./develop/db/db.json')
+const saveNote = require('./Develop/public/assets/js')
 
 // reads the db.json file
 app.get('/api/notes', (req, res) => {
