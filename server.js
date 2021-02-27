@@ -8,11 +8,14 @@ const PORT = process.env.PORT || 3001
 // instantiate the server
 const app = express()
 
-// middleware so app can accept post data
+// middleware
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
+// make css files available to use
+app.use(express.static('./develop/public'));
+app.use(express.static('public'));
 
 // route that front end can request data from
 const notes = require('./develop/db/db.json')
@@ -24,12 +27,12 @@ app.get('/api/notes', (req, res) => {
 
 // returns index.html
 app.get('/', (req, res) => {
-    return res.sendFile(path.join(__dirname, 'index.html'))
-})
+    res.sendFile(path.join(__dirname, './develop/public/index.html'));
+});
 
 // returns notes.html
 app.get('/notes', (req, res) => {
-    return res.sendFile(path.join(__dirname, 'notes.html'))
+    res.sendFile(path.join(__dirname, './develop/public/notes.html'))
 })
 
 // post receives a new note to save on the request body
